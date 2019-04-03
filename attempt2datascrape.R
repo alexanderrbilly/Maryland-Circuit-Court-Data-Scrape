@@ -55,7 +55,7 @@ search <- function(x,y,z,q){
     submit_search$clickElement()
     
     #Generate warning message if it appears on first search
-    warning_500 <- remDr$findElement("class name","pagebHOWARDr")
+    warning_500 <- remDr$findElement("class name","pagebanner")
     reorbit <<- ifelse(substr(warning_500$getElementText(),1,15)=="500 items found",1,0)
     title<- remDr$getTitle()
   }
@@ -80,7 +80,7 @@ search <- function(x,y,z,q){
     submit_search$clickElement()
     
     qerror <- "Error : \t Summary: NoSuchElement\n \t Detail: An element could not be located on the page using the given search parameters.\n \t class: org.openqa.selenium.NoSuchElementException\n\t Further Details: run errorDetails method\n"
-    q_death <- try(unlist(remDr$findElement("class name", "pagebHOWARDr")$getElementAttribute('id')),silent = TRUE)
+    q_death <- try(unlist(remDr$findElement("class name", "pagebanner")$getElementAttribute('id')),silent = TRUE)
     
     
     #Generate warning message if it appears on first search
@@ -91,10 +91,10 @@ search <- function(x,y,z,q){
       end_date$sendKeysToElement(list(format(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y")))
       submit_search <- remDr$findElement("name","action")
       submit_search$clickElement()
-      q_death <- try(unlist(remDr$findElement("class name", "pagebHOWARDr")$getElementAttribute('id')),silent = TRUE)
+      q_death <- try(unlist(remDr$findElement("class name", "pagebanner")$getElementAttribute('id')),silent = TRUE)
     }
     
-    warning_500 <- remDr$findElement("class name","pagebHOWARDr")
+    warning_500 <- remDr$findElement("class name","pagebanner")
     reorbit <<- ifelse(substr(warning_500$getElementText(),1,15)=="500 items found",1,0)
     title<- remDr$getTitle()
     #csv.export <- remDr$findElement(using = "link text","CSV")
@@ -179,7 +179,7 @@ for (i in 3:length(letters)){
     print("I got to the search page")
     
     error <- "Error : \t Summary: NoSuchElement\n \t Detail: An element could not be located on the page using the given search parameters.\n \t class: org.openqa.selenium.NoSuchElementException\n \t Further Details: run errorDetails method"
-    fatal <- try(unlist(remDr$findElement(using="xpath", "pagebHOWARDr")$getElementAttribute('id')),silent = TRUE)
+    fatal <- try(unlist(remDr$findElement(using="xpath", "pagebanner")$getElementAttribute('id')),silent = TRUE)
     
     #Generate warning message if it appears on first search
     while(fatal[1] == error & format(as.Date(anydate(as.Date(date_start,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y"))) &format(as.Date(anydate(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))){
@@ -194,7 +194,7 @@ for (i in 3:length(letters)){
     }
     
     if(fatal[1]!=error){
-      warning_500 <- remDr$findElement(using = "class name","pagebHOWARDr")
+      warning_500 <- remDr$findElement(using = "class name","pagebanner")
       reorbit <<- ifelse(substr(warning_500$getElementText(),1,15)=="500 items found",1,0)
     }
     
@@ -212,7 +212,7 @@ for (i in 3:length(letters)){
     else if(reorbit == 0 & format(as.Date(anydate(as.Date(date_start,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))& format(as.Date(anydate(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y"))) <= format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))){
       while(reorbit == 0 & format(as.Date(anydate(as.Date(date_start,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))&& format(as.Date(anydate(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y"))) <= format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))){
         csv_error <- "Error : \t Summary: NoSuchElement\n \t Detail: An element could not be located on the page using the given search parameters.\n \t class: org.openqa.selenium.NoSuchElementException\n \t Further Details: run errorDetails method"
-        csv_death<- try(unlist(remDr$findElement(using='class name', "pagebHOWARDr")$getElementAttribute('id')),silent = TRUE)
+        csv_death<- try(unlist(remDr$findElement(using='class name', "pagebanner")$getElementAttribute('id')),silent = TRUE)
         if(csv_error[1]!=csv_death){
           csv.export <- remDr$findElement(using = "link text","CSV")
           csv.export$clickElement()
@@ -295,7 +295,7 @@ for (i in 3:length(letters)){
     }
     
     qerror_1 <- "Error : \t Summary: NoSuchElement\n \t Detail: An element could not be located on the page using the given search parameters.\n \t class: org.openqa.selenium.NoSuchElementException\n \t Further Details: run errorDetails method"
-    q_death_1<- try(unlist(remDr$findElement(using='class name', "pagebHOWARDr")$getElementAttribute('id')),silent = TRUE)
+    q_death_1<- try(unlist(remDr$findElement(using='class name', "pagebanner")$getElementAttribute('id')),silent = TRUE)
     #Generate warning message if it appears on first search
     while(qerror_1 == q_death_1[1] & format(as.Date(anydate(as.Date(date_start,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))&format(as.Date(anydate(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))){
       print("qerror")
@@ -306,12 +306,12 @@ for (i in 3:length(letters)){
       end_date$sendKeysToElement(list(format(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y")))
       submit_search <- remDr$findElement("name","action")
       submit_search$clickElement()
-      q_death_1<- try(unlist(remDr$findElement("class name", "pagebHOWARDr")$getElementAttribute('id')),silent = TRUE)
+      q_death_1<- try(unlist(remDr$findElement("class name", "pagebanner")$getElementAttribute('id')),silent = TRUE)
     }
     
     if(format(as.Date(anydate(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))& format(as.Date(anydate(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y"))) <= format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))){
     if(qerror_1!=q_death_1[1]){
-      warning_500 <- remDr$findElement(using = "class name","pagebHOWARDr")
+      warning_500 <- remDr$findElement(using = "class name","pagebanner")
       reorbit <<- ifelse(substr(warning_500$getElementText(),1,15)=="500 items found",1,0)
     }
     search_again <- remDr$findElement(using = "link text","Search Again")
@@ -329,7 +329,7 @@ for (i in 3:length(letters)){
       while(reorbit == 0 & format(as.Date(anydate(as.Date(date_start,"%m/%d/%yyyy"),"%m/%d/%Y"))) < format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y"))) &format(as.Date(anydate(as.Date(date_end,"%m/%d/%yyyy"),"%m/%d/%Y"))) <= format(as.Date(anydate(as.Date(finale,"%m/%d/%yyyy"),"%m/%d/%Y")))){
         print("no longer error")
         csv_error <- "Error : \t Summary: NoSuchElement\n \t Detail: An element could not be located on the page using the given search parameters.\n \t class: org.openqa.selenium.NoSuchElementException\n \t Further Details: run errorDetails method"
-        csv_death<- try(unlist(remDr$findElement(using='class name', "pagebHOWARDr")$getElementAttribute('id')),silent = TRUE)
+        csv_death<- try(unlist(remDr$findElement(using='class name', "pagebanner")$getElementAttribute('id')),silent = TRUE)
         if(csv_error[1]!=csv_death){
           csv.export <- remDr$findElement(using = "link text","CSV")
           csv.export$clickElement()
